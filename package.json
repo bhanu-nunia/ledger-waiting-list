@@ -10,6 +10,7 @@
     "axios": "^0.24.0",
     "bootstrap": "^5.1.0",
     "contentful": "^10.0.0-beta-v10.8",
+    "dayjs": "^1.11.7",
     "jquery": "^3.6.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

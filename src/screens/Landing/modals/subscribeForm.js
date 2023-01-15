@@ -18,7 +18,7 @@ const handleAnalytics = () => {
   });
 };
 
-const SubscribeForm = ({ onChangeScreen }) => {
+const SubscribeForm = ({onChangeScreen, showDropdown, candidateName}) => {
   const recaptchaRef = useRef();
   const query = useUrlQuery();
   const [form, setForm] = useState({
@@ -50,6 +50,8 @@ const SubscribeForm = ({ onChangeScreen }) => {
         showAlert({ message, type: 'warning' });
       } else {
         onChangeScreen(MODAL_SCREENS[1]);
+        showDropdown(true);
+        candidateName(form.firstName);
       }
     }
   }, [data, error]);
@@ -58,6 +60,7 @@ const SubscribeForm = ({ onChangeScreen }) => {
     e.preventDefault();
     const recaptchaValue = recaptchaRef.current.getValue();
     submitData({
+      firstName: form.firstName,
       email: form.email,
       countryId: form.selectedCountry.id,
       sourceReferralCode: query.get('ref') || null,
@@ -87,6 +90,18 @@ const SubscribeForm = ({ onChangeScreen }) => {
         </p>
       </div>
       <form onSubmit={handleSubmitForm} id="confirm-phone-form" style={{ marginTop: '2.563rem' }}>
+      <div className="form-group mb-4">
+          <input
+            name="firstName"
+            type="text"
+            className="form-control-input"
+            placeholder="Enter your first name"
+            onChange={handleChange}
+            required
+          />
+
+          <label className="floating-label">Enter your first name</label>
+        </div>
         <div className="form-group mb-4">
           <input
             name="email"
@@ -150,4 +165,6 @@ export default SubscribeForm;
 
 SubscribeForm.propTypes = {
   onChangeScreen: PropTypes.func.isRequired,
+  showDropdown: PropTypes.bool.isRequired,
+  candidateName: PropTypes.string.isRequired
 };

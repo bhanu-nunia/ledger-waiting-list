@@ -6,6 +6,8 @@ import Referral from './screens/Referral';
 
 import Landing from './screens/Landing';
 
+import Members from './screens/Members';
+
 import Tc from './screens/Tc';
 
 import PrivacyPolicy from './screens/PrivacyPolicy';
@@ -26,6 +28,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/register" element={<Landing />} />
+        <Route exact path="/members" element={<Members />} />
         <Route exact path="/congrats" element={<Referral />} />
         <Route exact path="/terms-of-use" element={<Tc content={termsPage1} />} />
         <Route exact path="/privacy-policy" element={<PrivacyPolicy content={privacyPolicy} />} />
